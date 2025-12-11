@@ -1,0 +1,16 @@
+.env
+.venv/
+.node_modules/
+cache/
+.DS_Store
+.idea/
+.vscode/
+.pytest_cache/
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.coverage
+htmlcov/
+.pytest_cache/
+.coverage
+htmlcov/

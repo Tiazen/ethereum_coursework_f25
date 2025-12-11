@@ -1,0 +1,13 @@
+[project]
+name = "example"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "eth-oauth",
+    "fastapi>=0.124.2",
+    "python-multipart>=0.0.20",
+    "uvicorn>=0.38.0",
+]
+
+[tool.uv.sources]
+eth-oauth = { path = "../python_sdk/dist/eth_oauth-0.1.0-py3-none-any.whl" }

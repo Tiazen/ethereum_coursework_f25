@@ -1,0 +1,55 @@
+<html>
+  <head>
+    <title>Example</title>
+  </head>
+
+  <script>
+    function login() {
+      const form = document.querySelector("form");
+      const data = {
+        username: form.username.value,
+        password: form.password.value
+      };
+      fetch("/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          document.getElementById("result").innerHTML = JSON.stringify(data);
+        });
+    }
+    
+    async function g_auth_flow() {
+      try {
+        const token = await window.EthOAuth.login("http://127.0.0.1:8001/g-auth-fill");
+        // Token is returned - you can use it here
+        console.log("Token received:", token);
+        
+        document.getElementById("result").innerHTML = JSON.stringify(token.serverResponse);
+      } catch (error) {
+        console.error("Login failed:", error);
+        document.getElementById("result").innerHTML = "Error: " + error.message;
+      }
+    }
+  </script>
+  <body>
+    <h1>Example</h1>
+
+    <form
+      method="post"
+      style="display: flex; flex-direction: column; gap: 10px; width: 300px;"
+    >
+      <input type="text" name="username" placeholder="Username" />
+      <input type="password" name="password" placeholder="Password" />
+      <button type="button" onclick="login()">Login</button>
+
+      <button type="button" id="g-auth-autofill-btn" onclick="g_auth_flow()">Login with G-Auth</button>
+    </form>
+
+    <div id="result"></div>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+[project]
+name = "eth-oauth"
+version = "0.1.0"
+description = "Python library for verifying JWT tokens from ETH OAuth browser extension"
+readme = "README.md"
+authors = [{ name = "ETH OAuth" }]
+requires-python = ">=3.8"
+
+dependencies = [
+    "cryptography>=41.0.0",
+    "web3>=6.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "black>=23.0.0",
+    "mypy>=1.0.0",
+]
+
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]

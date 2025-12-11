@@ -1,0 +1,48 @@
+{
+  "manifest_version": 3,
+  "name": "Eth-OAuth Password Manager",
+  "version": "1.0.0",
+  "description": "Blockchain-based password manager with zero-knowledge architecture",
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Eth-OAuth Password Manager"
+  },
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["contentScript.js"],
+      "run_at": "document_start",
+      "all_frames": false
+    }
+  ],
+  "permissions": [
+    "storage",
+    "tabs",
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["popup.html", "inpage.js"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "eth-oauth@example.com",
+      "strict_min_version": "109.0"
+    }
+  }
+}
+  
